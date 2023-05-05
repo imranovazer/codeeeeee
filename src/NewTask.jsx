@@ -1,33 +1,37 @@
-import React, { useState } from 'react';
-import { Container ,Row ,Col } from 'reactstrap';
-import ForumComponent from './ForumComponent';
-import ProductList from './ProductList';
-import EditForm from './EditForm';
+import React, { useState } from "react";
+import { Container, Row, Col } from "reactstrap";
+import ForumComponent from "./ForumComponent";
+import ProductList from "./ProductList";
+import EditForm from "./EditForm";
 
 function NewTask() {
   const [products, setProducts] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const addProduct = (element) => {
-    setProducts([...products, element]);
+    setProducts([
+      ...products,
+      { ...element, id: Math.floor(Math.random() * 100) },
+    ]);
   };
 
   const deleteProduct = (id) => {
-    const newObj = products.filter(e => e.id !== id);
+    const newObj = products.filter((e) => e.id !== id);
     setProducts(newObj);
   };
 
-  const editProduct = (id, updatedProduct) => {
-    const index = products.findIndex((product) => product.id === id);
-    if (index === -1) {
-      console.log("Product not found");
-      return;
-    }
-    const updatedProducts = [...products];
-    updatedProducts[index] = {...updatedProducts[index], ...updatedProduct};
-    setProducts(updatedProducts);
+  const editProduct = (product) => {
+    console.log(product, selectedProduct);
+    const newPoductData = products.map((e) => {
+      if (e.id != selectedProduct) {
+        return e;
+      } else {
+        return { ...product, id: Math.floor(Math.random * 100) };
+      }
+    });
+    console.log("YOu are here");
+    setProducts(newPoductData);
   };
-
-  const [selectedProduct, setSelectedProduct] = useState(null);
 
   return (
     <Container>
@@ -38,21 +42,21 @@ function NewTask() {
         <Col xs={6}>
           <Row>
             <EditForm
-              selectedProduct={selectedProduct}
-              setSelectedProduct={setSelectedProduct}
+              productsData={products}
               editFunction={editProduct}
+              selectedProduct={selectedProduct}
             />
           </Row>
           <Row>
             <ProductList
               productsData={products}
               deleteFunction={deleteProduct}
-              editFunction={setSelectedProduct}
+              setSelectedProduct={setSelectedProduct}
             />
           </Row>
         </Col>
         <Col xs={6}>
-          <ForumComponent propFunction={addProduct}  />
+          <ForumComponent propFunction={addProduct} />
         </Col>
       </Row>
     </Container>
