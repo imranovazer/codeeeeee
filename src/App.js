@@ -1,47 +1,46 @@
 import { useState } from "react";
 import React from "react";
-import SuplierPage from "./SuplierPage";
-import Animals from "./Animals";
+
 import NewTask from "./NewTask";
 
 
 
 function App() {
   const people = [{
-    id : "1" ,
-    name : "Azer" ,
-    age : 12
-  } ,
+    id: "1",
+    name: "Azer",
+    age: 12
+  },
   {
-    id : "2" ,
-    name : "Leyla" ,
-    age : 32
-  }, 
+    id: "2",
+    name: "Leyla",
+    age: 32
+  },
   {
-    id : "3" ,
-    name : "Turan" ,
-    age : 32
-  } ,
+    id: "3",
+    name: "Turan",
+    age: 32
+  },
   {
-    id : "4" ,
-    name : "Ali" ,
-    age : 32
-  } ,
+    id: "4",
+    name: "Ali",
+    age: 32
+  },
   {
-    id : "5" ,
-    name : "Mehemmed" ,
-    age : 32
-  } ,
+    id: "5",
+    name: "Mehemmed",
+    age: 32
+  },
   {
-    id : "6" ,
-    name : "Abutalib" ,
-    age : 32
+    id: "6",
+    name: "Abutalib",
+    age: 32
   }
 
-]
+  ]
 
-const [peopleState, setPeopleState] = useState(people) ;
- 
+  const [peopleState, setPeopleState] = useState(people);
+
 
   return (
     // <div className="App">
@@ -59,7 +58,7 @@ const [peopleState, setPeopleState] = useState(people) ;
 
     //   </ul>
     // <Animals/>
-    <NewTask/>
+    <NewTask />
 
     // </div>
     // <SuplierPage />

@@ -1,7 +1,8 @@
+import { Button } from 'bootstrap'
 import React from 'react'
-import { Table} from 'reactstrap'
+import { Table } from 'reactstrap'
 
-function ProductList({productsData}) {
+function ProductList(props) {
   return (
     <Table>
     <thead>
@@ -9,17 +10,21 @@ function ProductList({productsData}) {
         <th>#</th>
         <th>Name</th>
         <th>Price</th>
-        <th>Seller</th>
+          <th>Seller</th>
+          <th>Delete</th>
+          <th>Edit</th>
       </tr>
     </thead>
     <tbody>
       
-      {productsData.map(
+      {props.productsData.map(
         e => <tr>
         <th scope="row">{e.id}</th>
         <td>{e.name}</td>
         <td>{e.price}</td>
-        <td>{e.seller}</td>
+          <td>{e.seller}</td>
+          <td><button onClick={() => props.deleteFunction(e.id)}>Delete</button></td>
+          <td><button onClick={()=>props.editFunction(props.productsData)}>Edit</button></td>
       </tr>
       )}
     </tbody>

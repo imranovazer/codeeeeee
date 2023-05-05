@@ -19,6 +19,7 @@ function ForumComponent(props) {
 
   return (
     <Form inline>
+      <h1>Add new product</h1>
         <FormGroup>
           <Label for="exampleEmail" hidden>Name</Label>
           <Input type="text" name="email" id="exampleEmail" placeholder="Name" onChange={(e)=>addproperty(e.target.value,'name')}/>
